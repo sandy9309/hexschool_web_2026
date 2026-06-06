@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nelson | Services</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .faq-answer {
+            display: none;
+            overflow: hidden;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-question {
+            cursor: pointer;
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .faq-item.active .faq-arrow {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
 
 <body>
@@ -71,7 +90,6 @@
                 </div>
             </div>
         </section>
-        <!-- 區塊二：SERVICE STEPS 服務流程 (深色背景) -->
         <section class="steps-section">
             <div class="steps-container">
                 <div class="steps-left-title">
@@ -111,7 +129,6 @@
             </div>
         </section>
 
-        <!-- 區塊三：USER CASE 客戶案例 (白色背景) -->
         <section class="cases-section">
             <div class="cases-left-title">
                 <span class="sub-title">USER CASE</span>
@@ -119,7 +136,6 @@
             </div>
             <div class="cases-container">
                 <div class="cases-grid">
-                    <!-- 案例 1 -->
                     <div class="case-card">
                         <div class="case-img">
                             <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/project_1.png?raw=true"
@@ -135,7 +151,7 @@
                             <a href="#" class="case-circle-btn">➔</a>
                         </div>
                     </div>
-                    <!-- 案例 2 -->
+                    
                     <div class="case-card">
                         <div class="case-img">
                             <img src="https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/project_2.png?raw=true"
@@ -155,7 +171,6 @@
             </div>
         </section>
 
-        <!-- 區塊四：FAQ 常見問題 (淺米色背景) -->
         <section class="faq-section">
             <div class="faq-container">
                 <div class="faq-left-title">
@@ -163,7 +178,6 @@
                     <h2 class="section-title">常見問題</h2>
                 </div>
                 <div class="faq-accordion-list">
-                    <!-- FAQ 1 -->
                     <div class="faq-item">
                         <div class="faq-question">
                             <span class="faq-num">01</span>
@@ -171,7 +185,6 @@
                             <span class="faq-arrow">▼</span>
                         </div>
                     </div>
-                    <!-- FAQ 2 -->
                     <div class="faq-item">
                         <div class="faq-question">
                             <span class="faq-num">02</span>
@@ -179,7 +192,6 @@
                             <span class="faq-arrow">▼</span>
                         </div>
                     </div>
-                    <!-- FAQ 3 (展開狀態範例) -->
                     <div class="faq-item active">
                         <div class="faq-question">
                             <span class="faq-num">03</span>
@@ -191,7 +203,6 @@
                                 設計皆使用主流工具，並附上對齊響應式佈局的格線系統、動態微調與跨團隊協作標記。不論是前端工程師或後端工程師，都能完美轉換為程式碼，完整保留設計骨架與不可妥協的網頁品質。</p>
                         </div>
                     </div>
-                    <!-- FAQ 4 -->
                     <div class="faq-item">
                         <div class="faq-question">
                             <span class="faq-num">04</span>
@@ -204,11 +215,9 @@
         </section>
     </main>
 
-    <!-- 5. 全域聯絡表單頁尾 (與 index.html 結構完全共用) -->
     <footer class="main-footer">
-        <section class="contact-section">
+        <section class="contact-section" id="contact">
             <div class="contact-container">
-                <!-- 左側資訊 -->
                 <div class="contact-info">
                     <p class="contact-subtitle">與我聯絡</p>
                     <h2 class="contact-title">CONTACT</h2>
@@ -217,22 +226,22 @@
                         歡迎填寫表單或直接與我聯絡！
                     </p>
                     <div class="contact-social">
-                        <a href="#">IG</a>
-                        <a href="#">LINE</a>
-                        <a href="#">IN</a>
+                        <a href="#" target="_blank" title="Instagram">IG</a>
+                        <a href="#" target="_blank" title="LINE">LINE</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
                     </div>
                     <p class="contact-email">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                             <path d="M4 6H20V18H4V6Z" stroke="white" stroke-width="2" />
                             <path d="M4 7L12 13L20 7" stroke="white" stroke-width="2" />
                         </svg>
-                        service@hexschool.com
+                        <a href="mailto:service@hexschool.com" style="color:inherit;">service@hexschool.com</a>
                     </p>
                 </div>
 
-                <!-- 右側表單 -->
+                
                 <div class="footer-form-wrap">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contact-form" onsubmit="handleContactFormSubmit(event)">
                         <div class="form-row-group">
                             <div class="form-group">
                                 <input type="text" id="name" name="name" placeholder="姓名" required>
@@ -251,10 +260,36 @@
                             <button type="submit" class="btn-submit">送出</button>
                         </div>
                     </form>
+                    <p id="contact-success-msg" style="display:none; color: var(--color-secondary-300); margin-top: 16px; font-weight: 600;">訊息已送出，感謝您的聯繫！我們將盡快回覆您 ✉️</p>
                 </div>
             </div>
         </section>
     </footer>
+    <script>
+        var faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(function(item) {
+            var question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', function() {
+                    var isActive = item.classList.contains('active');
+                    faqItems.forEach(function(i) { i.classList.remove('active'); });
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+
+        function handleContactFormSubmit(e) {
+            e.preventDefault(); 
+            var form = document.getElementById('contact-form');
+            var msg = document.getElementById('contact-success-msg');
+            form.reset();                   
+            msg.style.display = 'block';    
+        }
+    </script>
+
 </body>
 
 </html>

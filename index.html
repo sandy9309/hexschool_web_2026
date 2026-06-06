@@ -27,7 +27,7 @@
                 <p>專注於品牌網頁設計、使用者體驗優化與流暢的前端切版開發，用程式將視覺轉化為直覺的數位體驗。</p>
                 <div class="hero-btns">
                     <a href="projects.html" class="btn-primary">作品集</a>
-                    <a href="#contact" class="btn-secondary">聯絡我</a>
+                    <a href="#contact" class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); return false;">聯絡我</a>
                 </div>
             </div>
             <div class="hero-image-wrap">
@@ -57,7 +57,6 @@
 
             <div class="services-grid">
 
-                <!-- 1 -->
                 <div class="service-card">
                     <div class="service-header">
                         <span class="service-tag">GRAPHIC</span>
@@ -70,7 +69,7 @@
                     </div>
                     <h3>平面設計</h3>
                     <p>從品牌識別到視覺傳達，用專業設計精準傳遞核心價值</p>
-                    <div class="card-arrow-btn">↗</div>
+                    <a href="service.html" class="card-arrow-btn" title="了解平面設計服務">↗</a>
                 </div>
 
                 <!-- 2 -->
@@ -85,7 +84,7 @@
                     </div>
                     <h3>網頁設計</h3>
                     <p>美感易用並重，以 Figma 打造符合直覺的數位體驗</p>
-                    <div class="card-arrow-btn">↗</div>
+                    <a href="service.html" class="card-arrow-btn" title="了解網頁設計服務">↗</a>
                 </div>
 
                 <!-- 3 -->
@@ -101,7 +100,7 @@
                     </div>
                     <h3>前端切版</h3>
                     <p>精準轉譯設計稿細節，建構流暢穩定 RWD 響應式網頁</p>
-                    <div class="card-arrow-btn">↗</div>
+                    <a href="service.html" class="card-arrow-btn" title="了解前端切版服務">↗</a>
                 </div>
 
                 <!-- 4 -->
@@ -118,7 +117,7 @@
 
                     <h3>後端開發</h3>
                     <p>佈署穩定系統架構，串接 API 並確保數據處理安全</p>
-                    <div class="card-arrow-btn">↗</div>
+                    <a href="service.html" class="card-arrow-btn" title="了解後端開發服務">↗</a>
                 </div>
 
             </div>
@@ -138,7 +137,7 @@
 
                         <p>從品牌識別設計到 RWD 網站開發，打造療癒系植栽購物體驗</p>
 
-                        <a href="#" class="btn-project-action">前往專案</a>
+                        <a href="projects.html" class="btn-project-action">前往專案</a>
                     </div>
 
                     <div class="project-img">
@@ -250,10 +249,11 @@
                     <h2 class="sub-title">SUBSCRIPTION</h2>
                     <p class="sub-desc">你也在追求設計美感與技術落地的完美平衡嗎？作為資深設計師兼工程師，我深知前端領域的痛點。訂閱電子報，我將分享如何利用 AI 工具提升產能！</p>
 
-                    <form class="sub-form">
+                    <form class="sub-form" id="sub-form" onsubmit="handleSubFormSubmit(event)">
                         <input type="email" placeholder="電子信箱" required class="sub-input">
                         <button type="submit" class="sub-btn">送出</button>
                     </form>
+                    <p id="sub-success-msg" style="display:none; color: var(--color-secondary-300); margin-top: 12px; font-weight: 600;">感謝訂閱！我們會盡快與您聯絡 🎉</p>
                 </div>
 
             </div>
@@ -261,10 +261,10 @@
     </main>
 
     <footer class="main-footer">
-        <section class="contact-section">
+        <section class="contact-section" id="contact">
             <div class="contact-container">
 
-                <!-- 左側資訊 -->
+                
                 <div class="contact-info">
                     <p class="contact-subtitle">與我聯絡</p>
 
@@ -278,9 +278,9 @@
                     </p>
 
                     <div class="contact-social">
-                        <a href="#">IG</a>
-                        <a href="#">LINE</a>
-                        <a href="#">IN</a>
+                        <a href="#" target="_blank" title="Instagram">IG</a>
+                        <a href="#" target="_blank" title="LINE">LINE</a>
+                        <a href="#" target="_blank" title="LinkedIn">IN</a>
                     </div>
 
                     <p class="contact-email">
@@ -288,13 +288,13 @@
                             <path d="M4 6H20V18H4V6Z" stroke="white" stroke-width="2" />
                             <path d="M4 7L12 13L20 7" stroke="white" stroke-width="2" />
                         </svg>
-                        service@hexschool.com
+                        <a href="mailto:service@hexschool.com" style="color:inherit;">service@hexschool.com</a>
                     </p>
                 </div>
 
-                <!-- 右側表單 -->
+                
                 <div class="footer-form-wrap">
-                    <form class="contact-form">
+                    <form class="contact-form" id="contact-form" onsubmit="handleContactFormSubmit(event)">
 
                         <div class="form-row-group">
                             <div class="form-group">
@@ -321,11 +321,31 @@
                         </div>
 
                     </form>
+                    <p id="contact-success-msg" style="display:none; color: var(--color-secondary-300); margin-top: 16px; font-weight: 600;">訊息已送出，感謝您的聯繫！我們將盡快回覆您 ✉️</p>
                 </div>
 
             </div>
         </section>
     </footer>
+
+    <script>
+        function handleSubFormSubmit(e) {
+            e.preventDefault(); 
+            var form = document.getElementById('sub-form');
+            var msg = document.getElementById('sub-success-msg');
+            form.style.display = 'none';       
+            msg.style.display = 'block';        
+        }
+
+        function handleContactFormSubmit(e) {
+            e.preventDefault(); 
+            var form = document.getElementById('contact-form');
+            var msg = document.getElementById('contact-success-msg');
+            form.reset();                      
+            msg.style.display = 'block';        
+        }
+    </script>
+
 </body>
 
 </html>

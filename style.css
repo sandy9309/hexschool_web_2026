@@ -64,11 +64,7 @@
      margin-bottom: 8px;
      font-weight: bold;
  }
-
- /* ==========================================================================
-   2. HEADER 導覽列 
-   ========================================================================== */
- .main-header {
+.main-header {
      display: flex;
      justify-content: space-between;
      align-items: center;
@@ -98,24 +94,18 @@
      border-bottom: 2px solid var(--color-secondary-300);
      padding-bottom: 4px;
  }
-
- /* ==========================================================================
-   3. HERO SECTION 主視覺區 
-   ========================================================================== */
- .hero-section {
+.hero-section {
      display: flex;
      align-items: flex-end;
      justify-content: space-between;
      max-width: 1440px;
      margin: 0 auto;
      padding: 120px 40px 0px 40px;
-     /* 固定像素防貼邊，釋放寬度給內容 */
      background-color: var(--color-primary-50);
      position: relative;
      overflow: hidden;
  }
 
- /* 5個裝飾浮動圖 */
  .shape-decor {
      position: absolute;
      z-index: 1;
@@ -138,7 +128,7 @@
      width: 210px;
      height: auto;
      animation-delay: 0.5s;
-     z-index: 5; /* 數字越小越在底層 */
+     z-index: 5; 
 }
 
 .shape-blob-center {
@@ -147,24 +137,19 @@
      width: 120px;
      height: auto;
      animation-delay: 1s;
-     
-     /* 💡 重點：加入 z-index，數字越大越在上面 */
      z-index: 10; 
 }
 
-/* ⚠️ 注意：你的深色圖片（或區塊）也必須設定 position，層級控制才會生效 */
 .your-image-class {
-     position: relative; /* 或是 absolute */
-     z-index: 1;         /* 數字比色塊小，就會被色塊蓋住 */
+     position: relative; 
+     z-index: 1;         
 }
  .shape-flower-rc {
      top: 25%;
      right: 3px;
-     /* 💡 改用固定像素定位，確保在 4:6 比例下它一定會留在畫面內 */
      width: 90px;
      height: auto;
      z-index: 3;
-     /* 💡 強迫圖層開到第 3 層，絕對不會被右邊的人像大圖擋住 */
      animation-delay: 1.5s;
  }
 
@@ -178,7 +163,6 @@
      animation-delay: 0.2s;
  }
 
- /* 修正點 1：完美補齊此處動畫閉合的 } 右大括號 */
  @keyframes superFloating {
      0% {
          transform: translateY(0px) rotate(0deg) scale(1);
@@ -194,10 +178,8 @@
  }
  
  .hero-content {
-     /* 💡 修正點：文字區塊佔 40% 的彈性寬度 */
      flex: 1 1 40%;
      max-width: 520px;
-     /* 控制文字最大寬度，避免排版過於散開 */
      z-index: 2;
      margin-bottom: 80px;
  }
@@ -250,14 +232,12 @@
  }
 
  .hero-image-wrap {
-     /* 💡 修正點：圖片容器佔 60% 的彈性寬度，並拉大 max-width 讓大圖能完全撐滿 */
      flex: 1 1 60%;
      display: flex;
      justify-content: flex-end;
      align-items: flex-end;
      position: relative;
      max-width: 680px;
-     /* 放寬最大限制，讓人像可以大面積呈現 */
  }
 
  .hero-avatar {
@@ -270,16 +250,12 @@
      margin-bottom: 0;
  }
 
- /* ==========================================================================
-   ✨ 4. SERVICES 服務項目 
-   ========================================================================== */
- .services-section {
+.services-section {
      background-color: var(--color-primary-700);
      color: var(--color-neutral-0);
      max-width: 1440px;
      padding: 100px 8%;
      margin-top: -1px;
-     /* 消除瀏覽器可能產生的微小隙縫 */
  }
 
  .services-section .section-title {
@@ -295,9 +271,7 @@
 
  .services-section .sub-title {
      text-align: left;
-     /* 讓文字向左對齊 */
      display: block;
-     /* 確保它是區塊元素，才能精準執行對齊 */
  }
 
  .services-grid {
@@ -353,14 +327,8 @@
      color: var(--color-neutral-500);
      line-height: 1.5;
      margin: 0;
-
-     /* 💡 核心修正點：利用 padding 幫右下角的按鈕留出安全空位 */
      padding-right: 44px;
-     /* 留出右邊空間，文字就不會貼到最右邊（按鈕寬 40px） */
      padding-bottom: 10px;
-     /* 留出底部空間，防止文字往下塞死 */
-
-     /* 如果你原本有寫固定 max-width，建議拿掉或改為 100%，讓 padding 發揮作用 */
      max-width: 100%;
  }
 
@@ -378,17 +346,11 @@
      justify-content: center;
      font-size: 16px;
  }
-
- /* ==========================================================================
-   ✨ 5. PROJECTS 專案作品
-   ========================================================================== */
- /* 1. Project Hero Banner 區塊 */
- .project-hero-section {
+.project-hero-section {
      width: 100%;
      max-width: 1440px;
      margin: 0 auto;
      padding: 0;
-     /* 移除預設 section 的上下 padding，由內部撐開 */
  }
 
  .projects-section {
@@ -397,7 +359,6 @@
 
  .project-hero-bg {
      width: 100%;
-     /* 使用線性漸層遮罩(rgba)確保文字好閱讀，並完美帶入指定的背景圖 */
      background-image: linear-gradient(rgba(26, 17, 14, 0.4), rgba(26, 17, 14, 0.4)),
          url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/project_banner.png?raw=true');
      background-size: cover;
@@ -406,7 +367,6 @@
      padding-top: 140px;
      /* 撐開上方空間 */
      padding-bottom: 140px;
-     /* 撐開下方空間 */
      display: flex;
      align-items: center;
      justify-content: center;
@@ -435,7 +395,6 @@
      letter-spacing: 4px;
  }
 
- /* 2. Filter 篩選按鈕區塊 */
  .filter-section {
      width: 100%;
      padding-top: 60px;
@@ -445,60 +404,40 @@
 
  .filter-container {
      display: flex;
-     /* 💡 啟動 Flexbox 排版 */
      display: -webkit-flex;
-     /* 確保舊版瀏覽器相容 */
      flex-direction: row;
-     /* 💡 強迫內部元素一定要橫向「排成一排」 */
      justify-content: space-between;
-     /* 💡 整排按鈕水平置中 */
      align-items: center;
-     /* 所有按鈕高度齊平 */
      gap: 24px;
-     /* 💡 按鈕與按鈕之間的固定橫向間距 (依設計稿調整) */
      max-width: 1296px;
      margin: 0 auto;
      padding: 0 20px;
  }
 
  .filter-btn {
-     /* 💡 核心修正：將顯示模式設為 inline-flex，讓它具備區塊能力，高度才不會縮成一團 */
      display: block;
      align-items: center;
-
-
-     /* 💡 徹底去除按鈕外框與背景 */
      background-color: transparent;
      border: none;
-     /* ❌ 拿掉原本的 1px solid 外框 */
      outline: none;
-
-     /* 文字樣式設定 */
      color: var(--color-primary-700);
      padding: 12px 16px;
-     /* 稍微調整內距，讓文字有合理的點擊範圍 */
      font-size: 18px;
      font-weight: 700;
-
-     /* 防止按鈕因為畫面不夠寬而被擠壓變形 */
      flex-shrink: 0;
      white-space: nowrap;
-     /* 強迫文字絕對不折行 */
      cursor: pointer;
      transition: all 0.3s ease;
  }
 
- /* 滑鼠移入時的微互動 */
  .filter-btn:hover {
      color: var(--color-secondary-300);
  }
 
- /* 💡 只有被選中的 .active 按鈕，才需要顯示像設計稿那樣的膠囊滿版深色外觀 */
  .filter-btn.active {
      background-color: var(--color-primary-700);
      color: var(--color-neutral-0);
      padding: 12px 32px;
-     /* 讓選中的按鈕看起來大氣 */
      font-weight: 700;
  }
 
@@ -642,7 +581,6 @@
      color: white;
  }
 
- /* 3. 專案作品頁面 RWD 斷點優化 */
  @media (max-width: 768px) {
      .project-hero-bg {
          padding-top: 100px;
@@ -651,7 +589,6 @@
 
      .project-hero-title h1 {
          font-size: 48px;
-         /* 手機版標題縮小，防溢出 */
      }
 
      .project-hero-title p {
@@ -665,19 +602,14 @@
 
      .filter-container {
          gap: 12px;
-         /* 手機版按鈕稍微貼緊一點 */
      }
 
      .filter-btn {
          padding: 10px 24px;
-         /* 手機版按鈕體積縮小，好點擊 */
          font-size: 14px;
      }
  }
 
- /* ==========================================================================
-   6. BLOGS 部落格
-   ========================================================================== */
  .section-header {
      display: flex;
      justify-content: space-between;
@@ -724,10 +656,7 @@
      color: var(--color-primary-700);
  }
 
- /* ==========================================================================
-   7. SUBSCRIPTION 電子報訂閱
-   ========================================================================== */
- .sub-section {
+  .sub-section {
      width: 100%;
      height: 440px;
      background-image: url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/subscription_bg.png?raw=true');
@@ -831,11 +760,7 @@
      background-color: #3D312A;
      color: #FFFFFF;
  }
-
- /* ==========================================================================
-   8. FOOTER 頁尾與表單
-   ========================================================================== */
- .contact-section {
+.contact-section {
      background: #24140B;
      padding: 80px 40px;
  }
@@ -954,9 +879,6 @@
  }
 
 
- /* ==========================================================================
-   ✨ 9. 服務項目頁面 (service.html) 專專樣式 - 完全保留！
-   ========================================================================== */
  .service-hero-section {
      width: 100%;
      background-image: linear-gradient(rgba(26, 17, 14, 0.4), rgba(26, 17, 14, 0.4)), url('https://github.com/hexschool/2022-web-layout-training/blob/main/2026-web-camp/service_banner.png?raw=true');
@@ -1077,7 +999,6 @@
      color: #ffffff;
  }
 
- /* 服務流程與後續區塊 */
  .steps-section {
      background-color: #1A110E;
      color: #ffffff;
@@ -1276,9 +1197,6 @@
      margin: 0;
  }
 
- /* ==========================================================================
-   10. RWD - 響應式斷點優化
-   ========================================================================== */
  @media (max-width: 1024px) {
      .main-header {
          height: auto;
@@ -1492,15 +1410,12 @@
      }
   
     .cases-section {
-        flex-direction: column; /* 轉為垂直排列 */
+        flex-direction: column; 
         padding: 40px 16px;
         gap: 24px;
     }
 }
 
-  /* ==========================================================================
-   RWD 響應式斷點設定 (手機版)
-   ========================================================================== */
 @media (max-width: 768px) {
     .cases-left-title {
         width: 100%;
@@ -1516,13 +1431,12 @@
 
     .cases-left-title .section-title {
         font-size: 24px;
-        writing-mode: horizontal-tb; /* 中文恢復橫書 */
+        writing-mode: horizontal-tb; 
         text-align: center;
         display: block;
         letter-spacing: 0;
     }
 
-    /* 網格改為單欄 */
     .cases-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1530,18 +1444,17 @@
 
     .case-card {
         padding: 0;
-        border: none; /* 依據手機版設計，去除外框，改用純文字與圖片自然延伸 */
+        border: none; 
     }
 
-    /* 手機版圖片改為橫向寬幅 (3:2 或隨容器彈性) */
     .case-img {
         aspect-ratio: 3 / 2;
-        border-radius: 0; /* 若手機版要填滿切邊可調為 0 */
+        border-radius: 0; 
         margin-bottom: 12px;
     }
 
     .case-meta {
-        order: -1; /* 如果你想讓日期移到最上方，可用 order 調整 */
+        order: -1; 
         margin-bottom: 8px;
     }
 
@@ -1564,7 +1477,6 @@
     .case-circle-btn {
         width: 40px;
         height: 40px;
-        /* 手機版圖示有時會旋轉成右上 ↗ 這裡提供 transform 範例 */
         transform: rotate(-45deg); 
     }
     
@@ -1572,11 +1484,7 @@
         transform: rotate(-45deg) scale(1.05);
     }
 }
- /* ==========================================================================
-   11. BLOG 側邊欄 + 列表複合式架構樣式
-   ========================================================================== */
 
-/* --- Banner 大規格容器 --- */
 .blog-hero-section {
     width: 100%;
     max-width: 1440px;
@@ -1587,7 +1495,7 @@
 .blog-hero-bg {
     width: 100%;
     height: 360px;
-    background-color: #2B1B13; /* 品牌主要暗色底 */
+    background-color: #2B1B13; 
     background-image: linear-gradient(rgba(26, 17, 14, 0.4), rgba(26, 17, 14, 0.4)),
         url(https://raw.githubusercontent.com/hexschool/2022-web-layout-training/main/2026-web-camp/blog_banner.png);
     background-size: cover;
@@ -1621,7 +1529,6 @@
     letter-spacing: 4px;
 }
 
-/* --- 下方文章主區塊底色與配置 --- */
 .blog-list-section {
     width: 100%;
     background-color: #ffffff; 
@@ -1629,16 +1536,14 @@
     padding-bottom: 100px;
 }
 
-/* 雙欄 Flex 核心佈局 */
 .blog-container.main-layout {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 16px;
     display: flex;
-    gap: 48px; /* 擴大側邊欄與內容區的黃金間距 */
+    gap: 48px; 
 }
 
-/* --- 左側固定寬度分類側邊欄 --- */
 .sidebar {
     width: 220px;
     flex-shrink: 0;
@@ -1653,18 +1558,16 @@
     padding: 12px 16px;
     font-weight: 700;
     color: #404040;
-    border-radius: 8px; /* 加上精緻小圓角 */
+    border-radius: 8px; 
     transition: all 0.25s ease;
 }
 
-/* 啟動狀態與 Hover 微互動切換 */
 .menu-list li.active a,
 .menu-list a:hover {
-    background-color: #24140b; /* 承接你的精準主底色 */
+    background-color: #24140b; 
     color: #ffffff;
 }
 
-/* --- 右側文章清單包覆區 --- */
 .content-area {
     flex: 1;
 }
@@ -1675,26 +1578,24 @@
     gap: 32px;
 }
 
-/* --- 精緻圖文橫向卡片組 --- */
+
 .card {
     display: flex;
     background-color: #ffffff;
-    gap: 32px; /* 圖與文的中間間距 */
+    gap: 32px; 
     border-bottom: 1px dashed #e5e5e5;
     padding-bottom: 32px;
 }
 
-/* 移除最後一張卡片的虛線底，確保乾淨 */
 .card:last-child {
     border-bottom: none;
     padding-bottom: 0;
 }
 
-/* 左側橫向圖片盒子 */
 .card-image-box {
-    width: 40%; /* 調整至完美的黃金視覺比例 */
+    width: 40%; 
     height: 200px;
-    border-radius: 16px; /* 為圖片盒子加上內斂高質感圓角 */
+    border-radius: 16px; 
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -1707,12 +1608,10 @@
     transition: transform 0.4s ease;
 }
 
-/* 懸停卡片時圖片的微放大特效 */
 .card:hover .card-image-box img {
     transform: scale(1.04);
 }
 
-/* 右側文字說明區 */
 .card-info {
     width: 60%;
     padding: 8px 0;
@@ -1723,14 +1622,14 @@
 
 .card-tags {
     font-size: 14px;
-    color: #8E837D; /* 改用你 root 變數定義的優雅次要字色 */
+    color: #8E837D; 
     margin: 0;
 }
 
 .card-title {
     font-size: 22px;
     font-weight: 700;
-    color: #2B1B13; /* 與首頁文字主色調調和 */
+    color: #2B1B13; 
     margin: 8px 0;
     line-height: 1.4;
     display: -webkit-box;
@@ -1741,12 +1640,10 @@
     transition: color 0.2s ease;
 }
 
-/* 幕停卡片時標題亮起變色 */
 .card:hover .card-title {
-    color: #E6A15C; /* 移入時亮起你的 secondary 輔助暖橘色 */
+    color: #E6A15C; 
 }
 
-/* 卡片底部狀態列 */
 .card-footer {
     display: flex;
     align-items: center;
@@ -1769,30 +1666,24 @@
 .stat-item .material-symbols-outlined {
     font-size: 18px;
 }
-
-/* ==========================================================================
-   📱 響應式手機版（此區塊獨立且完美閉合，絕不干擾桌機）
-   ========================================================================== */
 @media (max-width: 992px) {
     .blog-list-section {
         padding-top: 40px;
         padding-bottom: 60px;
     }
 
-    /* 手機版雙欄轉單欄上下堆疊 */
     .blog-container.main-layout {
         flex-direction: column;
         gap: 32px;
     }
 
-    /* 側邊欄改為寬度滿版，橫向滑動或垂直排列 */
     .sidebar {
         width: 100%;
     }
 
     .menu-list {
         display: flex;
-        flex-wrap: wrap; /* 如果分類很多自動折行，也可以改用 overflow-x: auto 做橫滾動 */
+        flex-wrap: wrap; 
         gap: 8px;
     }
 
@@ -1805,7 +1696,6 @@
         font-size: 14px;
     }
 
-    /* 卡片在手機版轉為單欄 (圖上文下) */
     .card {
         flex-direction: column;
         gap: 16px;
